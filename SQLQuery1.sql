@@ -1,6 +1,6 @@
-﻿CREATE DATABASE RestaurantManagement
+﻿CREATE DATABASE Restaurant
 GO
-USE RestaurantManagement
+USE Restaurant
 GO   
 	CREATE TABLE MENU(
 		M_ID VARCHAR(8) PRIMARY KEY,

@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
-const Custemermodel = require('./custemer')
-const MenuModel = require('./MENU')
+const Custemermodel = require('./custemer');
+const MenuModel = require('./MENU');
+const MenuTypesModel = require('./MENU_TYPES');
 
 
-const sequelize = new Sequelize('quanLyUser', 'sa', '123456', {
+const sequelize = new Sequelize('restaurant', 'sa', '123456', {
     dialect: 'mssql',
     host: 'localhost',
     dialectOption: {
@@ -18,16 +19,20 @@ const sequelize = new Sequelize('quanLyUser', 'sa', '123456', {
         idle: 10000
     },
     logging: true
-})
+});
 
-const Custemer = Custemermodel(sequelize,Sequelize)
-const Menu = MenuModel(sequelize,Sequelize)
+const Custemer = Custemermodel(sequelize,Sequelize);
+const Menu = MenuModel(sequelize,Sequelize);
+const Menu_Types = MenuTypesModel(sequelize, Sequelize);
+Menu.belongsTo(Menu_Types,{foreignKey: 'MT_ID', as: 'menuTypes'});
+Menu_Types.hasMany(Menu,{foreignKey: 'MT_ID', as: 'menu'});
 
 sequelize.sync({force : true}).then(()=>{
-    console.log("creat dataabase")
-
+    console.log("create database");
 });
+
 module.exports ={
     Custemer,
-    Menu
+    Menu,
+    Menu_Types
 }
