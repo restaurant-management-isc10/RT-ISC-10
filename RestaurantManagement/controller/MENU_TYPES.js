@@ -26,7 +26,7 @@ router.get('/:id(\\d+)', (req, res) => {
     });
 });
 
-//create customer type
+//create menu types
 router.post('/', (req, res) => {
     MENU_TYPES.create(req.body).then(types => {
         res.json(Result(types));
@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
     });
 });
 
-//update customer type
+//update menu types
 router.put('/:id', (req, res) => {
     MENU_TYPES.findByPk(req.params.id).then(types => {
         if(types != null) {
@@ -52,7 +52,7 @@ router.put('/:id', (req, res) => {
     })
 });
 
-//delete customer type
+//delete menu types
 router.delete('/:id', (req, res) => {
     MENU_TYPES.destroy({
         where: {

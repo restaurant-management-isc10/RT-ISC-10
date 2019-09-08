@@ -8,14 +8,14 @@ router.use((req, res, next) => {
     next();
 });
 
-// listing all customer type
+// listing all materials
 router.get('/', (req, res) => {
     MATERIALS.findAll().then(types => {
         res.json(Result(types));
     });
 });
 
-//find customer type by id
+//find material by id
 router.get('/:id(\\d+)', (req, res) => {
     MATERIALS.findByPk(req.params.id).then(types => {
         if(types != null) {
@@ -26,7 +26,7 @@ router.get('/:id(\\d+)', (req, res) => {
     });
 });
 
-//create customer type
+//create material
 router.post('/', (req, res) => {
     MATERIALS.create(req.body).then(types => {
         res.json(Result(types));
@@ -35,12 +35,19 @@ router.post('/', (req, res) => {
     });
 });
 
-//update customer type
+//update material
 router.put('/:id', (req, res) => {
     MATERIALS.findByPk(req.params.id).then(types => {
         if(types != null) {
             types.update({
-                MT_Name: req.body.MT_Name
+                MA_T_ID: req.body.MA.T.ID,
+                MA_Name: req.body.MA_Name,
+                MA_Supplier: req.body.MA_Supplier,
+                MA_Unit: req.body.MA_Unit,
+                MA_Count: req.body.MA_Count,
+                MA_Cost: req.body.MA_Cost,
+                MA_Expiration_Date: req.body.MA_Expiration_Date,
+                MA_Import_Date: req.body.MA_Import_Date
             }).then(types => {
                 res.json(Result(types));
             }).catch(err => {
@@ -52,7 +59,7 @@ router.put('/:id', (req, res) => {
     })
 });
 
-//delete customer type
+//delete material
 router.delete('/:id', (req, res) => {
     MATERIALS.destroy({
         where: {

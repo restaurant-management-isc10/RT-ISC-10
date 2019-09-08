@@ -9,5 +9,7 @@ module.exports = (sequelize, type) => {
             type: type.STRING(8),
             allowNull: false
         }
-    },{timestamps : false})
+    }, {
+        timestamps: false
+    })
 }

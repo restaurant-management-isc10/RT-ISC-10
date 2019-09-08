@@ -9,8 +9,8 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {
     Employees.findAll(
 
-    ).then(types => {
-        res.json(types)
+    ).then(type => {
+        res.json(type)
     })
 });
 router.get('/:id', (req, res) => {
@@ -49,7 +49,7 @@ router.put(':/id',(req,res)=>{
                 E_Name: req.body.E_Name,
                 E_Position : req.body.E_Position,
                 E_Gender :req.body.E_Gender
-            }).then(type={
+            }).then(type=>{
                 res.json(type);
             }).catch(err =>{
                 return res.status(404).send(err.errors);

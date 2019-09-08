@@ -13,8 +13,9 @@
 
 <body>
     <div class="container">
+        <h2 class="text-center text-danger"> List Menu</h2>
         <div class="row">
-            <table id="table" class="table table-light">
+            <table id="table" class="table table">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -24,7 +25,12 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    <tr>
+                        <th>Name1</th>
+                        <th>Birthday1</th>
+                        <th>Email1</th>
+                        <th>Adress1</th>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -40,9 +46,11 @@
                     var html = "";
                     $(res).each((i, al) => {
                         html += '<tr>';
-                        html += '<td>'+al.name+'</td>'+'<td>'+al.birthday+'</td>'+'<td>'+al.email+'</td>'+'<td>'+al.address+'</td>';
+                        html += '<td>' + al.name + '</td>' + '<td>' + al.birthday +
+                            '</td>' + '<td>' + al.email + '</td>' + '<td>' + al.address +
+                            '</td>';
                         html += '</tr>';
-                            console.log(al);
+                        console.log(al);
 
                     })
                     $("#table >tbody").html(html);
